@@ -1,38 +1,227 @@
+body,
+html,
+:root > div {
+  height: 100%;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Space Mono", monospace;
+}
 .App {
-  text-align: center;
+  height: 100vh;
+  /* background-color: teal; */
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/* -----------------------------------------NAVBAR------------------------- */
+nav.responsive-nav {
+  width: 100%;
+  min-height: 14vh;
+  position: sticky;
+  top: 0;
+  display: inline-flex;
   align-items: center;
+}
+
+nav.responsive-nav > ul {
+  display: flex;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+  height: 100%;
+  align-items: center;
+  margin-right: 5%;
+  margin-left: auto;
+}
+
+nav > ul > li {
+  list-style-type: none;
+  padding: 20px;
+  float: right;
+}
+
+nav > ul > li > a {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 24px;
+}
+
+a:link {
+  text-decoration: none !important;
+}
+
+.logo {
+  color: var(--principal-text-color);
+  letter-spacing: 5px;
+  font-weight: bolder;
+  margin-left: 5%;
+  width: max-content;
+}
+
+.logo-nav {
+  cursor: pointer;
+  float: right;
+  display: none;
+}
+figure {
+  cursor: pointer;
+  display: none;
+}
+.active {
+  cursor: pointer;
+  width: 25px;
+  height: 2px;
+  margin: 5px;
+}
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ PRINCIPAL PAGE +++++++++++++++++++++++++++++++++++++++++++ */
+
+.principal {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: teal;
+}
+
+/* -----------------------------------------START CLICK------------------------- */
+
+.start-click {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.hand-click {
+  margin-top: 50vh;
+  cursor: pointer;
+  animation: scale 1.1s ease-out infinite alternate-reverse;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+@keyframes scale {
   to {
-    transform: rotate(360deg);
+    transform: scale(1.8);
+  }
+}
+/* -----------------------------------------START PRESENTATION------------------------- */
+
+.open-next-page {
+  background-color: var(--projects-background-color);
+  z-index: 1;
+  height: 100%;
+}
+
+.hidden-image {
+  display: none;
+}
+
+/* -----------------------------------------My PROJECTS ------------------------- */
+
+#wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 55vh;
+  overflow: hidden;
+}
+
+.layer {
+  position: absolute;
+  width: 100vw;
+  height: 55vw;
+  overflow: hidden;
+}
+
+.layer .content-wrap {
+  position: absolute;
+  width: 100vw;
+  min-height: 55vw;
+}
+
+.layer .content-body {
+  width: 25%;
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+/* -----------------------------------------MEDIA QUERY------------------------- */
+@media screen and (max-width: 830px) {
+  body {
+    overflow-x: hidden;
+  }
+  /* nav {
+    background-color: #d8d8d8;
+  } */
+  nav.responsive-nav > ul {
+    height: 100%;
+    width: 210px;
+    position: fixed;
+    right: 0;
+    flex-direction: column;
+    top: 14vh;
+    margin-right: 0%;
+    transition: 3000ms ease all;
+  }
+
+  .li-desactive {
+    height: 100%;
+    width: 320px;
+    left: -320;
+    position: fixed;
+    right: 0;
+    flex-direction: column;
+    top: 14vh;
+    margin-right: 0%;
+    display: none;
+  }
+
+  nav.responsive-nav > ul > li {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    list-style-type: none;
+  }
+
+  nav.responsive-nav > ul > li > a {
+    padding-right: 25%;
+  }
+
+  .logo-nav {
+    width: 100%;
+    /* color: black; */
+    color: var(--principal-opposite-color);
+    cursor: pointer;
+    display: block;
+  }
+
+  figure {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: 5%;
+    margin-top: 2%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  nav {
+    /* background-color: var(--navbar-background-color); */
+    color: var(--principal-opposite-color);
+  }
+  nav.responsive-nav > ul > li {
+    width: 100%;
+  }
+  .container-projects {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 1700px) {
+  #rockets {
+    width: 90%;
+  }
+
+  #about-me {
+    width: 90%;
   }
 }
