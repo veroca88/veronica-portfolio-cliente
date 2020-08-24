@@ -123,7 +123,7 @@ figure {
 .layer {
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
 }
 
@@ -139,7 +139,7 @@ figure {
   top: 50%;
   text-align: center;
   transform: translateY(-50%);
-  color: white;
+  color: black;
 }
 
 .layer svg {
@@ -155,7 +155,7 @@ figure {
 }
 
 .bottom {
-  background-color: #222;
+  background-color: rgb(228, 228, 228);
   z-index: 1;
 }
 
@@ -166,14 +166,57 @@ figure {
 .bottom h1 {
   color: #fdab00;
 }
+
+.top {
+  background-color: #20295a;
+  color: white;
+  z-index: 2;
+  width: 50vw;
+}
+
+.top .content-body {
+  left: 5%;
+  color: white;
+}
+
+.top h1 {
+  color: #fdab00;
+}
+
+.handle {
+  position: absolute;
+  height: 100%;
+  display: block;
+  background-color: #fdab00;
+  width: 5px;
+  top: 0;
+  left: 50%;
+  z-index: 3;
+}
+.skewed .handle {
+  top: 50%;
+  transform: rotate(30deg) translateY(-50%);
+  height: 200%;
+  transform-origin: top;
+}
+
+.skewed .top {
+  transform: skew(-30deg);
+  margin-left: -1500px;
+  width: calc(50vw + 1500px);
+}
+
+.skewed .top .content-wrap {
+  transform: skew(30deg);
+  margin-left: 1500px;
+}
+
 /* -----------------------------------------MEDIA QUERY------------------------- */
 @media screen and (max-width: 830px) {
   body {
     overflow-x: hidden;
+    font-size: 75%;
   }
-  /* nav {
-    background-color: #d8d8d8;
-  } */
   nav.responsive-nav > ul {
     height: 100%;
     width: 210px;
@@ -223,6 +266,23 @@ figure {
     margin-left: auto;
     margin-right: 5%;
     margin-top: 2%;
+  }
+
+  .content-wrap svg {
+    /* display: block; */
+    width: 100%;
+  }
+
+  .bottom .content-body {
+    top: 90%;
+    width: 100%;
+    text-align: end;
+  }
+
+  .top .content-body {
+    top: 10%;
+    width: 100%;
+    text-align: start;
   }
 }
 
