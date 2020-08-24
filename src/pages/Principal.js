@@ -9,6 +9,7 @@ export default function Principal() {
   }
   return (
     <div className="principal">
+      <h1>Hey! I'm Veronica and I'm a Web Developer</h1>
       <StartPresentation openPage={openPage} onClick={nextPage} />
     </div>
   );
