@@ -183,7 +183,7 @@ figure {
   color: #fdab00;
 }
 
-.handle {
+#handle {
   position: absolute;
   height: 100%;
   display: block;
@@ -193,7 +193,7 @@ figure {
   left: 50%;
   z-index: 3;
 }
-.skewed .handle {
+.skewed #handle {
   top: 50%;
   transform: rotate(30deg) translateY(-50%);
   height: 200%;

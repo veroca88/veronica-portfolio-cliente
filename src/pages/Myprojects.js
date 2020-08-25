@@ -1,15 +1,30 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
+import useMousePosition from "../components/MousePosition/useMousePosition";
 
 export default function Myprojects() {
+  const position = useMousePosition();
+  const delta = (position.x - window.innerWidth / 2) * 0.5;
+  const left = position.x + delta + "px";
+  const topLayer = position.x + 1500 + delta + "px";
+
+  // const [skew, setSkew] = useState(-1);
+  const [handle, setHandle] = useState(true);
   return (
-    <section id="wrapper" wrapperRef className="skewed">
+    <section
+      id="wrapper"
+      // className={skew != -1 ? "skewed" : ""}
+      className="skewed"
+      // onMouseEnter={() => setSkew(index)}
+      // onMouseLeave={() => setSkew(-1)}
+    >
       <div className="layer bottom">
         <div className="content-wrap">
           <div className="content-body">
             <h1>My Work</h1>
             <p>
-              Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsum Lorem
-              ipsumLorem ipsumLorem ipsum Lorem ipsumLorem ipsum Lorem ipsum
+              x:{position.x}
+              <hr />
+              y:{position.y}
             </p>
           </div>
           <svg
@@ -1963,8 +1978,7 @@ export default function Myprojects() {
           </svg>
         </div>
       </div>
-
-      <div className="handle"></div>
+      {handle ? <div id="handle" style={{ left }} /> : <div id="handle"></div>}
     </section>
   );
 }
