@@ -1064,7 +1064,7 @@ export default function Myprojects() {
         </div>
       </div>
 
-      <div className="layer top">
+      <div className="layer top" style={{ width: topLayer }}>
         <div className="content-wrap">
           <div className="content-body">
             <h1>About me</h1>
