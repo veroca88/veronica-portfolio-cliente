@@ -6,9 +6,11 @@ export default function useMousePosition() {
   useEffect(() => {
     const setFromEvent = (e) => setPosition({ x: e.clientX, y: e.clientY });
     window.addEventListener("mousemove", setFromEvent);
+    // window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
       window.removeEventListener("mousemove", setFromEvent);
+      // window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
