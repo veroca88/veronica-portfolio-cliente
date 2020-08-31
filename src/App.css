@@ -138,7 +138,7 @@ figure {
   position: absolute;
   top: 50%;
   text-align: center;
-  transform: translateY(-50%);
+  /* transform: translateY(-50%); */
   color: black;
 }
 

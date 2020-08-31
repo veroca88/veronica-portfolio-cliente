@@ -3,39 +3,43 @@ import useMousePosition from "../components/MousePosition/useMousePosition";
 
 export default function Myprojects() {
   const position = useMousePosition();
-  // console.log("POSITION MOUSE ONLY IN X", position.x);
 
-  const delta = (position.x - window.innerWidth / 2) * 0.5;
-  const left = position.x + delta + "px";
-  const topLayer = position.x + 1500 + delta + "px";
+  // const delta = (position.x - window.innerWidth / 2) * 0.5;
+  // const left = position.x + delta + "px";
+  // const topLayer = position.x + 1500 + delta + "px";
+  const left = window.innerWidth / 2 + "px";
+  const topLayer = window.innerWidth / 2 + 1500 + "px";
 
-  const [handle, setHandle] = useState(true);
-  const [coordinates, setCoordinates] = useState({ x: 0 });
+  const [handle, setHandle] = useState({ x: position.x, y: position.y });
+  const [center, setCenter] = useState(true);
+  const [hold, setHold] = useState();
 
-  const pauseEffect = () => {
-    setHandle(!handle);
+  const updateCursor = () => {
+    setHandle({ x: position.x });
   };
 
-  // const setPosition = () => {
-  //   const pausePosition = pauseEffect();
-  // };
-  // useEffect(() => {
-  //   setPosition();
-  // }, [coordinates]);
+  const holdPage = (e) => {
+    handle.x > 650 && handle.x < 1200
+      ? setCenter(true)
+      : handle.x > 1000
+      ? setHold(true)
+      : setHold(false);
+    console.log("=============== section", "handle", handle, "hold", hold);
+  };
 
   return (
-    <section onClick={pauseEffect} id="wrapper" className="skewed">
-      <div className="layer bottom">
+    //
+    <section onMouseMove={updateCursor} id="wrapper" className="skewed">
+      <div
+        onClick={center ? null : holdPage}
+        style={{ zIndex: hold && !center ? 10 : 1 }}
+        className="layer bottom"
+      >
         <div className="content-wrap">
           <div className="content-body">
-            <h1>My Work</h1>
-            <p>
-              x:{position.x}
-              y:{position.y}
-              <hr />
-              left: {left}
-              top layer: {topLayer}
-            </p>
+            <h1 className="">My Work</h1>
+            <p>See More</p>
+            <p>Get in touch</p>
           </div>
           <svg
             width="1110"
@@ -1074,7 +1078,13 @@ export default function Myprojects() {
         </div>
       </div>
 
-      <div style={{ width: handle ? topLayer : null }} className="layer top">
+      <div
+        // onClick={holdPage}
+        // style={{
+        //   width: hold ? topLayer : "4000px",
+        // }}
+        className="layer top"
+      >
         <div className="content-wrap">
           <div className="content-body">
             <h1>About me</h1>
@@ -1988,7 +1998,14 @@ export default function Myprojects() {
           </svg>
         </div>
       </div>
-      {handle ? <div id="handle" style={{ left }} /> : <div id="handle"></div>}
+      {/* {hold ? (
+        <div id="handle" style={{ left }} />
+      ) : ( */}
+      <div
+        id="handle"
+        // style={{ left: "2400px" }}
+      ></div>
+      {/* )} */}
     </section>
   );
 }
