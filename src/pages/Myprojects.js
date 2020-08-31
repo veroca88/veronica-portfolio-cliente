@@ -1,43 +1,33 @@
 import React, { useEffect, useState } from "react";
 import useMousePosition from "../components/MousePosition/useMousePosition";
-
 export default function Myprojects() {
   const position = useMousePosition();
 
-  // const delta = (position.x - window.innerWidth / 2) * 0.5;
-  // const left = position.x + delta + "px";
-  // const topLayer = position.x + 1500 + delta + "px";
   const left = window.innerWidth / 2 + "px";
   const topLayer = window.innerWidth / 2 + 1500 + "px";
 
   const [handle, setHandle] = useState({ x: position.x, y: position.y });
-  const [center, setCenter] = useState(true);
   const [hold, setHold] = useState();
 
   const updateCursor = () => {
     setHandle({ x: position.x });
   };
 
-  const holdPage = (e) => {
-    handle.x > 650 && handle.x < 1200
-      ? setCenter(true)
-      : handle.x > 1000
-      ? setHold(true)
-      : setHold(false);
-    console.log("=============== section", "handle", handle, "hold", hold);
+  const holdPage = () => {
+    handle.x > 1000 ? setHold(true) : setHold(false);
   };
 
   return (
     //
     <section onMouseMove={updateCursor} id="wrapper" className="skewed">
       <div
-        onClick={center ? null : holdPage}
-        style={{ zIndex: hold && !center ? 10 : 1 }}
+        onClick={holdPage}
+        style={{ zIndex: hold ? 10 : 1 }}
         className="layer bottom"
       >
         <div className="content-wrap">
           <div className="content-body">
-            <h1 className="">My Work</h1>
+            <h1>My Work</h1>
             <p>See More</p>
             <p>Get in touch</p>
           </div>
@@ -1079,10 +1069,10 @@ export default function Myprojects() {
       </div>
 
       <div
-        // onClick={holdPage}
-        // style={{
-        //   width: hold ? topLayer : "4000px",
-        // }}
+        onClick={holdPage}
+        style={{
+          width: hold ? topLayer : "",
+        }}
         className="layer top"
       >
         <div className="content-wrap">
@@ -1998,14 +1988,7 @@ export default function Myprojects() {
           </svg>
         </div>
       </div>
-      {/* {hold ? (
-        <div id="handle" style={{ left }} />
-      ) : ( */}
-      <div
-        id="handle"
-        // style={{ left: "2400px" }}
-      ></div>
-      {/* )} */}
+      <div id="handle"></div>
     </section>
   );
 }

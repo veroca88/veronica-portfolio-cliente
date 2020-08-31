@@ -215,7 +215,7 @@ figure {
 @media screen and (max-width: 830px) {
   body {
     overflow-x: hidden;
-    font-size: 75%;
+    font-size: 85%;
   }
   nav.responsive-nav > ul {
     height: 100%;
